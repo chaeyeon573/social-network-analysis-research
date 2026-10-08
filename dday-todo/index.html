@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f6bed">
+  <meta name="description" content="디데이 관리와 투두리스트를 한 곳에서">
+  <title>디데이 &amp; 투두</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>디데이 &amp; 투두</h1>
+    <p class="today" id="today"></p>
+  </header>
+
+  <main>
+    <!-- 디데이 -->
+    <section class="panel" id="panel-dday" role="tabpanel" aria-labelledby="tab-dday">
+      <form class="card add-form" id="dday-form" autocomplete="off">
+        <input type="text" id="dday-name" placeholder="이벤트 이름 (예: 시험, 여행)" maxlength="40" required>
+        <div class="row">
+          <input type="date" id="dday-date" required>
+          <button type="submit" class="btn-primary">추가</button>
+        </div>
+      </form>
+      <ul class="list" id="dday-list"></ul>
+      <p class="empty" id="dday-empty">아직 등록된 디데이가 없어요.</p>
+    </section>
+
+    <!-- 투두 -->
+    <section class="panel" id="panel-todo" role="tabpanel" aria-labelledby="tab-todo" hidden>
+      <form class="card add-form" id="todo-form" autocomplete="off">
+        <div class="row">
+          <input type="text" id="todo-text" placeholder="할 일을 입력하세요" maxlength="100" required>
+          <button type="submit" class="btn-primary">추가</button>
+        </div>
+      </form>
+
+      <h2 class="section-title">할 일 <span class="count" id="todo-active-count">0</span></h2>
+      <ul class="list" id="todo-active"></ul>
+      <p class="empty" id="todo-active-empty">남은 할 일이 없어요 🎉</p>
+
+      <div class="section-head">
+        <h2 class="section-title">완료 <span class="count" id="todo-done-count">0</span></h2>
+        <button type="button" class="btn-text" id="todo-clear-done">완료 항목 비우기</button>
+      </div>
+      <ul class="list" id="todo-done"></ul>
+      <p class="empty" id="todo-done-empty">완료한 항목이 여기에 표시돼요.</p>
+    </section>
+  </main>
+
+  <nav class="tabbar" role="tablist">
+    <button type="button" role="tab" id="tab-dday" aria-controls="panel-dday" aria-selected="true" data-tab="dday">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm-2 8h14v10H5V10z"/></svg>
+      <span>디데이</span>
+    </button>
+    <button type="button" role="tab" id="tab-todo" aria-controls="panel-todo" aria-selected="false" data-tab="todo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+      <span>투두</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
